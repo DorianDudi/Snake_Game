@@ -60,29 +60,24 @@ function passMoveParam() {
 }
 
 document.addEventListener('keydown', changeDirection);
-//document.addEventListener('keydown', passMoveParam);
-
+//document.addEventListener('keydown', passMoveParam); // by using this listener with all the following code commented out I am able to simply move the
+//square on the canvas using the arrow keys
 
 function delayedMove() {
 	setTimeout(move, 500 * countSteps, currentDirection);
-	++countSteps;
-}
-
-while (countSteps < 20) {
-	delayedMove();
 }
 
 /*
-while (countSteps < 20) {
+while (!gameOver) {				// If I use a flag variable as the game condition (the gameOver variable declared on line 4)...
 	delayedMove();
-	if (x > 590 || x < 0 || y > 590 || y < 0) {
-		gameOver = 1;
+	if (x > 590 || x < 0 || y > 590 || y < 0) {		// and the if statement here which checks for the square being out of bounds...
+		gameOver = 1;								// I crash the game
 		alert('Game Over');
-	}
-
-	if (countSteps < 10) {
-		gameOver = 1;
-	alert('Game Over');
 	}
 }
 */
+
+while (countSteps < 20) {	// I can only get the square to move a fixed number of steps (which isn't what I need for the implementation)
+	delayedMove();			// but the motion is not in even intervals
+	++countSteps;			// for a limit of 20 the first 10 movements are correct at 10px distance but the next 10 steps the square moves at
+} // double that distance (20px) as far as I can tell
