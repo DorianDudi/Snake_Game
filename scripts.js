@@ -31,15 +31,40 @@ function moveDown() {
 	ctx.fillRect(x, y, 10, 10);
 }
 
-function move(Dir) {
-	if (Dir == 1) {
-		moveRight();
-	} else if (Dir == 2) {
-		moveDown();
-	} else if (Dir == 3) {
-		moveLeft();
+function endGame() {
+    ctx.fillText('GAME OVER', 220, 250);
+    clearInterval(intervalID);
+}
+
+function isOutOfBounds(currentX, currentY, direction) {
+	let outOfBounds = 0;
+	if (direction == 1 && (currentX + 10 > 490)) {
+		outOfBounds = 1;
+	} else if (direction == 2 && (currentY + 10 > 490)) {
+		outOfBounds = 1;
+	} else if (direction == 3 && (currentX - 10 < 0)) {
+		outOfBounds = 1;
 	} else {
-		moveUp();
+		if (currentY - 10 < 0) {
+			outOfBounds = 1;
+		}
+	}
+	return outOfBounds;
+}
+
+function move(Dir) {
+	if (isOutOfBounds(x, y, Dir)) {
+		endGame();
+	} else {
+		if (Dir == 1) {
+			moveRight();
+		} else if (Dir == 2) {
+			moveDown();
+		} else if (Dir == 3) {
+			moveLeft();
+		} else {
+			moveUp();
+		}
 	}
 }
 
@@ -55,29 +80,9 @@ function changeDirection(event) {// key listeners
 	}
 }
 
-function passMoveParam() {
-	move(currentDirection);
+function runGame() {
+	document.addEventListener('keydown', changeDirection);
+	document.addEventListener('keydown', move(currentDirection));
 }
 
-document.addEventListener('keydown', changeDirection);
-//document.addEventListener('keydown', passMoveParam); // by using this listener with all the following code commented out I am able to simply move the
-//square on the canvas using the arrow keys
-
-function delayedMove() {
-	setTimeout(move, 500 * countSteps, currentDirection);
-}
-
-/*
-while (!gameOver) {				// If I use a flag variable as the game condition (the gameOver variable declared on line 4)...
-	delayedMove();
-	if (x > 590 || x < 0 || y > 590 || y < 0) {		// and the if statement here which checks for the square being out of bounds...
-		gameOver = 1;								// I crash the game
-		alert('Game Over');
-	}
-}
-*/
-
-while (countSteps < 20) {	// I can only get the square to move a fixed number of steps (which isn't what I need for the implementation)
-	delayedMove();			// but the motion is not in even intervals
-	++countSteps;			// for a limit of 20 the first 10 movements are correct at 10px distance but the next 10 steps the square moves at
-} // double that distance (20px) as far as I can tell
+const intervalID = setInterval(runGame, speed);
