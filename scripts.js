@@ -1,7 +1,7 @@
 //snake game
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-let x = 295, y = 295, speed = 500, gameOver = 0, currentDirection = 1, countSteps = 0;
+let x = 250, y = 220, speed = 200, currentDirection = 1;
 let gameCanvas = document.getElementById('game');
 
 ctx.fillStyle = 'green';
