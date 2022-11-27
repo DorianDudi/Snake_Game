@@ -80,9 +80,9 @@ function changeDirection(event) {// key listeners
 	}
 }
 
-function runGame() {
-	document.addEventListener('keydown', changeDirection);
-	document.addEventListener('keydown', move(currentDirection));
+function moveOnce() {
+	move(currentDirection);
 }
 
-const intervalID = setInterval(runGame, speed);
+document.addEventListener('keydown', changeDirection);
+const intervalID = setInterval(moveOnce, speed);
