@@ -167,22 +167,22 @@ function move(Dir) {
 function changeDirection(event) {	// key listeners
 	let newDirection = 0;
 	if (event.key === 'ArrowRight') { // the conditionals prevent the snake from moving in opposite directions
-    	newDirection = 1;				
-        if (currentDirection != 3) {	// going back should only be done through a "U" turn
-        	currentDirection = newDirection;
-        }
-    } else if (event.key === 'ArrowDown') {
+		newDirection = 1;				
+		if (currentDirection != 3) {	// going back should only be done through a "U" turn
+			currentDirection = newDirection;
+		}
+	} else if (event.key === 'ArrowDown') {
 		newDirection = 2;
 		if (currentDirection != 4) {
 			currentDirection = newDirection;
 		}
-    } else if (event.key === 'ArrowLeft') {
-    	newDirection = 3;
-        if (currentDirection != 1) {
+	} else if (event.key === 'ArrowLeft') {
+		newDirection = 3;
+		if (currentDirection != 1) {
 			currentDirection = newDirection;
 		}
-    } else if (event.key === 'ArrowUp') {
-    	newDirection = 4;
+	} else if (event.key === 'ArrowUp') {
+		newDirection = 4;
 		if (currentDirection != 2) {
 			currentDirection = newDirection;
 		}
