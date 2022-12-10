@@ -1,7 +1,29 @@
 body {
     font-family: sans-serif;
+    background-color: black;
+}
+p {
+    color: white;
+    background-color: #919191;
+    display: inline-block;
+    width: 48%;
+    margin: 0;
+}
+
+#controls_container {
+    text-align: center;
+    width: 500px;
+    height: 70px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+#canvas_container {
+    text-align: center;
+    margin: 0;
 }
 
 canvas {
-    border: 1px solid red;
+    border: 4px solid silver;
 }
