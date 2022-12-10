@@ -49,6 +49,8 @@ function runGame() {
 			if (i == 0) {
 				ctx.fillRect(snakeTrail[0][i], snakeTrail[1][i], 10, 10);
 			} else if (i == snakeTrail[0].length - 1) {
+				ctx.fillRect(snakeTrail[0][i] + 2, snakeTrail[1][i] + 3, 4, 4);
+			} else if (i == snakeTrail[0].length - 2) {
 				ctx.fillRect(snakeTrail[0][i] + 2, snakeTrail[1][i] + 2, 6, 6);
 			} else {
 				ctx.fillRect(snakeTrail[0][i] + 1, snakeTrail[1][i] + 1, 8, 8);
