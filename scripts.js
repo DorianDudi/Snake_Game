@@ -82,10 +82,10 @@ function runGame() {
 			generateTarget();
 			if (score > high_score) {
 				high_score_alert = 1;
-			}
-			if (high_score > 0) {
-				high_score = score;
-				document.getElementById("high_score").innerHTML = " " + score;
+				if (high_score > 0) {
+					high_score = score;
+					document.getElementById("high_score").innerHTML = " " + score;
+				}
 			}
 		}
 	}
